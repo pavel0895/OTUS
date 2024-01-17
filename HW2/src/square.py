@@ -1,15 +1,13 @@
 from HW2.src.figure import Figure
 
+
 class Square(Figure):
-    def __init__(self, a):
-        self.__a = a
+    def __init__(self, name, a):
+        super().__init__(name)
+        self.a = a
 
-    @property
     def area(self):
-        return self.__a * self.__a
+        return self.a * self.a
 
-    @property
     def perimeter(self):
-        return self.__a * 4
-
-
+        return self.a * 4

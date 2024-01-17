@@ -2,14 +2,15 @@ from HW2.src.figure import Figure
 
 
 class Rectangle(Figure):
-    def __init__(self, a, b):
-        self.__a = a
-        self.__b = b
+    def __init__(self, name, a, b):
+        super().__init__(name)
+        self.a = a
+        self.b = b
 
-    @property
+
     def area(self):
-        return self.__a * self.__b
+        return self.a * self.b
 
-    @property
+
     def perimeter(self):
-        return (self.__a + self.__b) * 2
+        return (self.a + self.b) * 2

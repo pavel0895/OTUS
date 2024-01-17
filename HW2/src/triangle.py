@@ -4,21 +4,20 @@ import math
 
 
 class Triangle(Figure):
-    def __init__(self, a, b, c):
+    def __init__(self, name, a, b, c):
+        super().__init__(name)
         if a <= 0 or b <= 0 or c <= 0:
             raise ValueError("Заданы некорректные значения длин треугольника")
         if (a + b <= c) or (a + c <= b) or (b + c <= a):
             raise ValueError("Нельзя создать треугольник")
 
-        self.__a = a
-        self.__b = b
-        self.__c = c
+        self.a = a
+        self.b = b
+        self.c = c
 
-    @property
     def area(self):
-        p = 0.5 * (self.__a + self.__b + self.__c)
-        return int(math.isqrt(p * (p - self.__a) * (p - self.__b) * (p - self.__c)))
+        p = 0.5 * (self.a + self.b + self.c)
+        return math.sqrt(p * (p - self.a) * (p - self.b) * (p - self.c))
 
-    @property
     def perimeter(self):
-        return self.__a + self.__b + self.__c
+        return self.a + self.b + self.c
