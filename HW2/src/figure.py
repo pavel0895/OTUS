@@ -1,16 +1,19 @@
-class FigureMeta(type):
-    def __new__(cls, name, bases, dct):
-        if "area" not in dct or not isinstance(dct["area"], property):
-            raise ValueError("Класс должен иметь свойство 'area'")
-        return super().__new__(cls, name, bases, dct)
+from abc import ABC, abstractmethod
 
+class Figure(ABC):
+    def __init__(self, name):
+        self.name = name
 
-class Figure():
-    @property
+    @abstractmethod
     def area(self):
-        raise NotImplementedError()
+        pass
 
-    def add_area(self, figure):
-        if not isinstance(figure, Figure):
-            raise ValueError("Фигура не является геометрической")
-        return self.area + figure.area
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+    def add_area(self, other_figure):
+        if not isinstance(other_figure, Figure):
+            raise ValueError("other_figure должно быть фигурой")
+        return self.area() + other_figure.area()
+
