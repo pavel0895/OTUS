@@ -1,12 +1,16 @@
 from HW2.src.figure import Figure
 
 class Circle(Figure):
-    def __init__(self, radius, name):
-        super().__init__(name)
+    def __init__(self, radius):
+        super().__init__(name="Circle")
+        if radius <= 0:
+            raise ValueError("Нельзя создать круг с радиусом <= 0")
         self.radius = radius
 
     def area(self):
-        return 3.14 * self.radius * self.radius
+        area_value = 3.14 * self.radius * self.radius
+        return int(area_value)
 
     def perimeter(self):
-        return 2 * 3.14 * self.radius
+        perimeter_value = 2 * 3.14 * self.radius
+        return int(perimeter_value)
